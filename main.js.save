@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+
+/* global __dirname, Buffer */
+const colors = require('colors');
+const Versions = require('./modules/Versions');
+(async function () {
+    const backendVersion = await Versions.backendVersion;
+    const labelLines = backendVersion.label.match(/(.{1,19}\S)(?:\s+|$)|(.{20})", @"$1$2\r\n/g);
+    console.info('*********************************'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, ' Tortoise vehicle server '.brightBlue, '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, '                 __      ', '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, "      .,-;-;-,. /'_\\     ", '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, '    _/_/_/_|_\\_\\) /      ', '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, "  '-<_,-.><_><,-./       ", '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, "     ( o )===( o )       ", '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, '      `-\´     `-\´        ', '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, '          2021           '.green, '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, ''.green, backendVersion.name.padEnd(24, ' ').gray, '***'.brightYellow.bgBrightGreen);
+    console.info('***'.brightYellow.bgBrightGreen, ''.green, backendVersion.commit.padEnd(24, ' ').gray.underline, '***'.brightYellow.bgBrightGreen);
+    for (const line of labelLines) {
+        console.info('***'.brightYellow.bgBrightGreen, ''.green, line.padEnd(24, ' ').gray, '***'.brightYellow.bgBrightGreen);
+    }
+    console.info('*********************************'.brightYellow.bgBrightGreen);
+})();
+
+const { app, setVehicleBroker } = require('./modules/WebApp')
+const httpsServer = require('./modules/HttpsServer.js')(app, 443, 80);
+const { vehicleBroker } = require('./modules/VehicleBroker')(8883, httpsServer);
+//const proxyServer = require('./modules/ProxyServer.js')(app, 4000);
+const proxyServer = require('./modules/ProxyServer.js')(8080);
+setVehicleBroker(vehicleBroker);

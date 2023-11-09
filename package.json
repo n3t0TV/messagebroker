@@ -1,0 +1,42 @@
+{
+  "name": "backendvehicle",
+  "version": "1.0.0",
+  "description": "Vehicle server",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js",
+    "dev3": "node main.js --http 8080 --https 8443"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://oscargilfc:tc.12.gc.21@bitbucket.org/ErnestoTV/backendvehicle.git"
+  },
+  "keywords": [
+    "vehicle",
+    "server"
+  ],
+  "author": "Oscar Gil Fernández",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ErnestoTV/backendvehicle#readme",
+  "dependencies": {
+    "aedes": "^0.46.1",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "lodash": "^4.17.21",
+    "moment-timezone": "^0.5.37",
+    "mqtt": "^4.2.8",
+    "mysql": "^2.18.1",
+    "node-fecth": "0.0.1-security",
+    "node-fetch": "^2.6.1",
+    "node-localstorage": "^2.2.1",
+    "session-file-store": "^1.5.0",
+    "simple-git": "^3.7.1",
+    "uid-safe": "^2.1.5",
+    "websocket-stream": "^5.5.2",
+    "yargs": "^17.4.1"
+  }
+}
